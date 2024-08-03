@@ -7,11 +7,17 @@ function calculateAge() {
   if (birthdayValue === "") {
     alert("Please enter your birthday");
   } else {
+    const currentDate = new Date();
+    const birthdayDate = new Date(birthdayValue);
+
+    if (birthdayDate > currentDate) {
+      alert("The birthday cannot be in the future.");
+    } else {
     const age = getAge(birthdayValue);
     resultEl.innerText = `Your age is ${age} ${age > 1 ? "years" : "year"} old`;
   }
 }
-
+}
 function getAge(birthdayValue) {
   const currentDate = new Date();
   const birthdayDate = new Date(birthdayValue);
