@@ -1,21 +1,44 @@
-body{
+body {
     margin: 0;
     display: flex;
     justify-content: center;
-    background-color: rgb(104, 110, 8);
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, rgb(66, 66, 66), #2b54839a);
+    animation: backgroundAnimation 10s infinite alternate;
 }
 
-.form{
-    position: absolute;
-    top: 30%;
-    box-shadow: 0 4px 8px rgba(0,0,0,.3);
+@keyframes backgroundAnimation {
+    0% {
+        background: linear-gradient(135deg, rgb(116, 63, 84), #4a91e23f);
+    }
+    100% {
+        background: linear-gradient(135deg, #07070765, rgb(15, 85, 79));
+    }
+}
+
+.form {
+    box-shadow: 20px 20px 60px #00000018, inset -20px -20px 60px rgba(255, 255, 255, 0.185);
     width: 400px;
-    background-color:rgb(151, 42, 151);
-    color: azure;
-    border-radius: 10px;
+    background-color: rgb(243, 243, 243);
+    color: rgb(0, 0, 0);
+    border-radius: 20px;
+    padding: 20px;
+    animation: formAnimation 0.5s ease-out;
 }
 
-.input{
+@keyframes formAnimation {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.input {
     width: 100%;
     box-sizing: border-box;
     padding: 20px;
@@ -25,38 +48,50 @@ body{
     font-family: cursive;
 }
 
-.input::placeholder{
+.input::placeholder {
     color: lightgray;
 }
 
-.list{
+.list {
     padding: 0;
     margin: 0;
 }
 
-.list li{
+.list li {
     list-style-type: none;
     padding: 20px;
     font-family: cursive;
-    border-top: dotted;
+    border-top: solid black;
     border-color: darkgray;
     position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: background-color 0.3s ease;
 }
 
-.list li .fa-trash{
+.list li:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.list li .buttons {
+    display: flex;
+    gap: 0px;
+}
+
+.list li .fa-trash {
     color: red;
-    position: absolute;
-    right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
     cursor: pointer;
 }
-.list li .fa-check-square{
+
+.list li .fa-check-square {
     color: rgb(65, 189, 65);
-    position: absolute;
-    right: 40px;
-    top: 50%;
-    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.list li .fa-edit, 
+.list li .fa-save, 
+.list li .fa-times {
     cursor: pointer;
 }
 
@@ -65,6 +100,6 @@ body{
     text-decoration: line-through;
 }
 
-.list li.checked .fa-check-square{
+.list li.checked .fa-check-square {
     color: darkgray;
 }
