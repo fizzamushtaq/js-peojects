@@ -20,10 +20,28 @@ function clearResult() {
 }
 
 function calculateResult() {
-  inputFieldEl.value = eval(inputFieldEl.value);
+  try {
+    inputFieldEl.value = eval(inputFieldEl.value);
+  } catch (error) {
+    inputFieldEl.value = "Error";
+  }
 }
+
 
 function appendValue(buttonValue) {
   inputFieldEl.value += buttonValue;
+  
   //   inputFieldEl.value = inputFieldEl.value + buttonValue;
+}
+function sin() {
+  inputFieldEl.value = Math.round(Math.sin(inputFieldEl.value));
+}
+function cos() {
+  inputFieldEl.value = Math.round(Math.cos(inputFieldEl.value));
+}
+function tan() {
+  inputFieldEl.value = Math.round(Math.tan(inputFieldEl.value));
+}
+function log() {
+  inputFieldEl.value = Math.log(inputFieldEl.value);
 }

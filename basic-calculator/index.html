@@ -11,11 +11,11 @@
     <div class="calculator">
         <input type="text" id="result" readonly>
         <div class="buttons">
+            <button class="operator" onclick="sin()">sin</button>
+            <button class="operator" onclick="cos()">cos</button>
+            <button class="operator" onclick="tan()">tan</button>
+            <button class="operator" onclick="log()">log</button>
             <button class="clear">C</button>
-            <button class="operator">sin</button>
-            <button class="operator">cos</button>
-            <button class="operator">tan</button>
-            <button class="operator">log</button>
             <button class="operator">/</button>
             <button class="operator">*</button>
             <button class="operator">-</button>
@@ -31,7 +31,7 @@
             <button class="number">2</button>
             <button class="number">3</button>
             <button class="number">0</button>
-            <button class="percentage">%</button>
+            <button class="percentage" onclick="display('%')">%</button>
             <button class="decimal">.</button>
         </div>
     </div>
