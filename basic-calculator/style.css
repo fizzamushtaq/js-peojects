@@ -4,26 +4,29 @@
   }
   
   .calculator {
-    background-color: #1a1919;
+    background-color: rgba(24, 24, 24, 0.5);
     padding: 30px;
     max-width: 300px;
     margin: 0 auto;
     border: solid 1px #242222;
     box-shadow: 
-    inset 5px 5px 10px rgba(255, 255, 255, 0.1), /* Inner shadow with low intensity */
-    inset -5px -5px 10px rgba(0, 0, 0, 0.5); /* Darker shadow for depth */
+    inset 5px 5px 10px rgba(194, 191, 191, 0.418), /* Inner shadow with low intensity */
+    inset -5px -5px 10px rgba(97, 95, 95, 0.349); /* Darker shadow for depth */
     border-radius: 20px;
     margin-top: 40px;
   }
   
   #result{
       width: 100%;
-      padding: 10px;
-      font-size: 24px;
+      padding: 50px;
+      font-size: 30px;
+      text-align:end;
+      color: white;
       border: none;
+      background-color: rgba(24, 24, 24, 0.5);
       box-shadow: 
-      inset 5px 5px 10px rgba(255, 255, 255, 0.1), /* Inner shadow with low intensity */
-      inset -5px -5px 10px rgba(0, 0, 0, 0.5); /* Darker shadow for depth */
+      inset 5px 5px 10px rgba(32, 31, 31, 0.1), /* Inner shadow with low intensity */
+      inset -5px -5px 10px rgba(70, 69, 69, 0.5); /* Darker shadow for depth */
       border-radius: 5px;
   }
   
@@ -36,9 +39,9 @@
   
   button{
       padding: 10px;
-      font-size: 24px;
-      border: none;
-      box-shadow: inset 5px 5px 10px #302f2fc9,-5px -5px 10px #55545418;
+      font-size: 15px;
+      border: whitesmoke 5px;
+      box-shadow: inset 5px 5px 10px #aca6a646,inset -5px -5px 10px #080808b0;
       border-radius: 30px;
       cursor: pointer;
       transition: background-color 0.3s ease;
@@ -47,10 +50,11 @@
   
   button:hover{
       background-color: #b3b1b1;
+      border: #242222;
   }
   
   .clear{
-      background-color: #ff4136;
+      background-color: #d60707;
       color: #fff;
   }
   
@@ -58,6 +62,10 @@
       background-color: #161616;
       color: #ffffff;
   
+  }
+  .percentage{
+    background-color: #161616;
+    color: #ffffff;
   }
   
   .operator{
