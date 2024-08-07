@@ -34,13 +34,13 @@ function appendValue(buttonValue) {
   //   inputFieldEl.value = inputFieldEl.value + buttonValue;
 }
 function sin() {
-  inputFieldEl.value = Math.round(Math.sin(inputFieldEl.value));
+  inputFieldEl.value = Math.floor(Math.sin(inputFieldEl.value));
 }
 function cos() {
-  inputFieldEl.value = Math.round(Math.cos(inputFieldEl.value));
+  inputFieldEl.value = Math.floor(Math.cos(inputFieldEl.value)  );
 }
 function tan() {
-  inputFieldEl.value = Math.round(Math.tan(inputFieldEl.value));
+  inputFieldEl.value = Math.floor(Math.tan(inputFieldEl.value) );
 }
 function log() {
   inputFieldEl.value = Math.log(inputFieldEl.value);
