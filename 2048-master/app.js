@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
     function createBoard() {
         for (let i = 0; i < width * width; i++) {
             const square = document.createElement("div")
-            square.innerHTML = 0
+            square.innerHTML = ""
             gridDisplay.appendChild(square)
             squares.push(square)
         }
@@ -213,9 +213,9 @@ document.addEventListener("DOMContentLoaded", () => {
     //add colours
     function addColours() {
         for (let i = 0; i < squares.length; i++) {
-            if (squares[i].innerHTML == 0) squares[i].style.backgroundColor = "#afa192"
-            else if (squares[i].innerHTML == 2) squares[i].style.backgroundColor = "#eee4da"
-            else if (squares[i].innerHTML == 4) squares[i].style.backgroundColor = "#ede0c8"
+            if (squares[i].innerHTML == 0) squares[i].style.backgroundColor = "#FF0000"
+            else if (squares[i].innerHTML == 2) squares[i].style.backgroundColor = "#000000"
+            else if (squares[i].innerHTML == 4) squares[i].style.backgroundColor = "#000000"
             else if (squares[i].innerHTML == 8) squares[i].style.backgroundColor = "#f2b179"
             else if (squares[i].innerHTML == 16) squares[i].style.backgroundColor = "#ffcea4"
             else if (squares[i].innerHTML == 32) squares[i].style.backgroundColor = "#e8c064"
