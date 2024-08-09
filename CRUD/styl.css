@@ -181,6 +181,7 @@ input[type="Email"]:target ~ .input-label {
     border: 1px solid #1120645b;
     padding: 20px;
     border-radius: 5px;
+    float: center;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 .dob-form label {
@@ -208,13 +209,18 @@ input[type="Email"]:target ~ .input-label {
     border-radius: 4px;
     font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease; 
+    
+}
+.dob-form .button-container {
+    display: flex;
+    justify-content: flex-end;  /* Aligns the button to the right */
 }
 
 .dob-form button:hover {
-    background-color: #fdfdfd;
+    background-color: #90939c;
     color: #0a133d;
 }
 .dob-form input:hover{
-    background-color: #f7f7f7;
+    background-color: #90939c;
 }
