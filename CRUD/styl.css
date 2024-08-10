@@ -61,6 +61,7 @@ box-sizing: border-box;
 border-radius: 10px;
 height: 500px ;
 box-shadow:  inset60px 60px 60px #6374c2ab, inset -60px -60px 60px rgba(197, 194, 194, 0.185);;
+transition: all 0.3s ease;
 }
 .container:hover{
     border: 1px solid rgb(235, 222, 222);
@@ -197,12 +198,13 @@ input[type="Email"]:target ~ .input-label {
     margin-bottom: 20px;
     font-size: 16px;
     border: 1px solid #46559b83;
-    background-color: #36468dab;
+    background-color: #0a133d;
     border-radius: 4px;
+    color: #f7f7f7;
 }
 
 .dob-form button {
-    background-color: #36468dab;
+    background-color:  #0a133d;
     color: #fffafa;
     padding: 10px 15px;
     border: 1px #6374c2ab;
@@ -219,8 +221,10 @@ input[type="Email"]:target ~ .input-label {
 
 .dob-form button:hover {
     background-color: #90939c;
-    color: #0a133d;
+    color:  #0a133d;
+    border: #f7f7f7;
 }
 .dob-form input:hover{
-    background-color: #90939c;
+    background-color:  #3b4881;
+    color:#f7f7f7;
 }
