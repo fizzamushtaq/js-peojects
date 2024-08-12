@@ -17,11 +17,11 @@ function validtheenterdata(enterdata) {
     // else if (enterdata = "email") {
     //     alert("please enter a email ") ;
     // }
-    else {
-      enterdata.push(enterdata);
-      console.log("push", enterdata);
-      console.log("enterdata check ", enterdata);
-    }
+    // else {
+    //   enterdata.push(enterdata);
+    //   console.log("push", enterdata);
+    //   console.log("enterdata check ", enterdata);
+    // }
 
   // Get form values
   const username = document.querySelector("#first-name").value = '';
