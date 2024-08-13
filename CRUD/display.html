@@ -10,16 +10,20 @@
     <div class="containers">
         <h1>User Details</h1>
         <table id="userTable">
-            <tr>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Date of Birth</th>
-                <th>Action</th>
-            </tr>
-            <tr>
-                
-        
-            </tr>
+            <thead style="text-align: center;">
+                <tr>
+                    <th style="text-align: center;">Action</th>
+                </thead>
+          <tr>
+    <td id="fname">First Name</td>
+    <td id="lname">Last Name</td>
+    <td id="email">Email</td>
+    <td id="age">Age</td>
+    <td>
+        <button onclick="editEntry(UNIQUE_ID)">Edit</button>
+        <button onclick="deleteEntry(UNIQUE_ID)">Delete</button>
+    </td>
+</tr>
         </table>
     </div>
 

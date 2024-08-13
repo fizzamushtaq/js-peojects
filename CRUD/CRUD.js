@@ -1,54 +1,33 @@
 const submit = document.querySelector("#submit");
-console.log("Submit ", submit);
 
-let enterdata = true;
-if (enterdata) {
+if (submit) {
   submit.addEventListener("click", function (e) {
     e.preventDefault();
-    console.log(enterdata);
-    validtheenterdata(enterdata);
+    validtheenterdata();
   });
 }
 
-function validtheenterdata(enterdata) {
-    if (isNaN(enterdata)) {
-      alert("please enter a valid name ");
-    }
-    // else if (enterdata = "email") {
-    //     alert("please enter a email ") ;
-    // }
-    // else {
-    //   enterdata.push(enterdata);
-    //   console.log("push", enterdata);
-    //   console.log("enterdata check ", enterdata);
-    // }
-
+function validtheenterdata() {
   // Get form values
-  const username = document.querySelector("#first-name").value = '';
-  const lastname = document.querySelector("#last-name").value = '';
-  const email = document.querySelector("#email").value = '';
-  const dob = document.getElementById("dob").value = '';
-
-  console.log(
-    "Before:- \n first name",
-    username,
-    "last name",
-    lastname,
-    "email:- ",
-    email,
-    "dob",
-    dob
-  );
+  const username = document.querySelector("#first-name").value;
+  const lastname = document.querySelector("#last-name").value;
+  const email = document.querySelector("#email").value;
+  const dob = document.getElementById("dob").value;
+  
+  // Check if fields are empty or contain only spaces
+  if (!username.trim() || !lastname.trim() || !email.trim() || !dob.trim()) {
+    alert("Please fill all fields correctly.");
+    return;
+  }
 
   // Create an object with the form data
   const newEntry = {
+    id: Date.now(),
     fname: username,
     lname: lastname,
     email: email,
     dob: dob,
   };
-
-  console.log("After ", newEntry);
 
   // Get the existing data from localStorage
   let storedData = JSON.parse(localStorage.getItem("userData")) || [];
@@ -58,6 +37,12 @@ function validtheenterdata(enterdata) {
 
   // Store the updated array back in localStorage
   localStorage.setItem("userData", JSON.stringify(storedData));
+
+  // Clear the form fields
+  document.querySelector("#first-name").value = '';
+  document.querySelector("#last-name").value = '';
+  document.querySelector("#email").value = '';
+  document.getElementById("dob").value = '';
 
   console.log("Current Stored Data: ", storedData);
 }

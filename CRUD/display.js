@@ -1,70 +1,69 @@
-
-
 let tableBody = document.getElementById('userTable');
 
-
 window.onload = function() {
-    // Retrieve data from local storage
+    // Get the stored data from localStorage
     let storedData = JSON.parse(localStorage.getItem("userData")) || [];
-
-    // Get the table body where data will be displayed
+  
+    // Get the table body element
     let tableBody = document.getElementById('userTable');
+  
+    // Loop through the stored data and append rows to the table
+    storedData.map((entry, index) => {
+        const row = document.createElement("tr");
 
-    // Get the current year to calculate age
-    let currentYear = new Date().getFullYear();
+        // Parse the DOB and calculate the age
+        const dob = new Date(entry.dob);
+        const age = calculateAge(dob);
 
-    // Loop through each entry in the data array
-    storedData.forEach((entry, index) => {
-        // Skip empty entries
-        if (entry.fname === '' && entry.lname === '' && entry.email === '' && entry.dob === '') {
-            return;
-        }
-
-        // Calculate age from DOB
-        let dobYear = new Date(entry.dob).getFullYear();
-        let age = currentYear - dobYear;
-
-        // Create a new row
-        let row = document.createElement('tr');
-
-        // Populate the row with data
         row.innerHTML = `
             <td>${entry.fname}</td>
             <td>${entry.lname}</td>
             <td>${entry.email}</td>
             <td>${age}</td>
             <td>
-                <button onclick="editEntry(${index})">Edit</button>
-                <button onclick="deleteEntry(${index})">Delete</button>
+                <button onclick="editEntry(${entry.id})">Edit</button>
+                <button onclick="deleteEntry(${entry.id})">Delete</button>
             </td>
         `;
-
-        // Append the row to the table body
         tableBody.appendChild(row);
     });
 }
 
+// Function to calculate age from DOB
+function calculateAge(dob) {
+    const today = new Date();
+    let age = today.getFullYear() - dob.getFullYear();
+    const monthDifference = today.getMonth() - dob.getMonth();
 
-function editEntry(index) {
-    let storedData = JSON.parse(localStorage.getItem("userData"));
+    // Adjust if birthday hasn't occurred yet this year
+    if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < dob.getDate())) {
+        age--;
+    }
 
-    // Example: Prompt to edit the first name
-    let newFname = prompt("Enter new first name:", storedData[index].fname);
-    if (newFname) {
-        storedData[index].fname = newFname;
-        localStorage.setItem('formEntries', JSON.stringify(storedData));
-        location.reload(); // Reload the page to reflect changes
+    return age;
+}
+
+function editEntry(id) {
+    let storedData = JSON.parse(localStorage.getItem("userData")) || [];
+
+    let entry = storedData.find(entry => entry.id === id);
+    if (entry) {
+        // Prompt the user for new values or use a form to update the entry
+        entry.fname = prompt("Enter new first name:", entry.fname) || entry.fname;
+        entry.lname = prompt("Enter new last name:", entry.lname) || entry.lname;
+        entry.email = prompt("Enter new email:", entry.email) || entry.email;
+        entry.dob = prompt("Enter new date of birth:", entry.dob) || entry.dob;
+
+        // Store the updated array back in localStorage
+        localStorage.setItem("userData", JSON.stringify(storedData));
     }
 }
+function deleteEntry(id) {
+    let storedData = JSON.parse(localStorage.getItem("userData")) || [];
 
-function deleteEntry(index) {
-    let storedData = JSON.parse(localStorage.getItem("userData"));
+    // Filter out the entry with the given ID
+    storedData = storedData.filter(entry => entry.id !== id);
 
-    // Remove the entry at the specified index
-    storedData.splice(index, 1);
-    localStorage.setItem('formEntries', JSON.stringify(storedData));
-    location.reload(); // Reload the page to reflect changes
+    // Store the updated array back in localStorage
+    localStorage.setItem("userData", JSON.stringify(storedData));
 }
-
-
-
