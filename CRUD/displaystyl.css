@@ -1,11 +1,46 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 body {
     font-family: Arial, sans-serif;
     background-color: #0a133d;
-    display: flex;
+    /* display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    margin: 0;
+    margin: 0; */
+}
+
+/* Header Styles */
+header {
+    background-color: #6374c2ab;
+    padding: 1px;
+}
+
+.nav-list {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+
+.nav-list li {
+    margin: 0 20px;
+}
+
+.nav-list a {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 200;
+    padding: 5px 10px;
+    transition: background-color 0.3s ease;
+}
+
+.nav-list a:hover {
+    text-decoration: underline;
 }
 
 .containers {
@@ -13,9 +48,16 @@ body {
     padding: 20px;
     border-radius: 12px;
     box-shadow: 0px 10px 20px rgba(216, 216, 216, 0.2);
-    width: 600px;
     text-align: center;
-    padding-bottom: 50px;
+    position: absolute;
+    top: 20%;
+    left: 40%;
+    transform: translate(-50%, -50%);
+    margin-top: 200px;
+    margin-left: 100px;
+    width: 50rem;
+    padding: 2.5rem;
+    box-sizing: border-box;
 }
 .containers h1{
     color: white;

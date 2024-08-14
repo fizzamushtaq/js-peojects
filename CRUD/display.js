@@ -32,11 +32,13 @@ function renderTable() {
         const age = calculateAge(dob);
 
         row.innerHTML = `
-            <td>${entry.fname} ${entry.lname}</td>
-            <td>${entry.email}</td>
+            <td contenteditable="false">${entry.fname} ${entry.lname}</td>
+            
+            <td contenteditable="false">${entry.email}</td>
             <td>${age}</td>
             <td>
-                <button onclick="editEntry(${entry.id})">Edit</button>
+                <button onclick="editEntry(${entry.id}, this)">Edit</button>
+                <button onclick="saveEntry(${entry.id}, this)">Save</button>
                 <button onclick="deleteEntry(${entry.id})">Delete</button>
             </td>
         `;
@@ -58,20 +60,47 @@ function calculateAge(dob) {
     return age;
 }
 
-function editEntry(id) {
-    let storedData = JSON.parse(localStorage.getItem("userData")) || [];
+function editEntry(id, button) {
+    // Get the row containing the clicked button
+    let row = button.parentElement.parentElement;
+    let cells = row.querySelectorAll('td');
 
-    let entry = storedData.find(entry => entry.id === id);
-    if (entry) {
-        // Prompt the user for new values or use a form to update the entry
-        entry.fname = prompt("Enter new first name:", entry.fname) || entry.fname;
-        entry.lname = prompt("Enter new last name:", entry.lname) || entry.lname;
-        entry.email = prompt("Enter new email:", entry.email) || entry.email;
-        entry.dob = prompt("Enter new date of birth:", entry.dob) || entry.dob;
+    // Make the cells editable
+    cells[0].setAttribute('contenteditable', 'true');
+    cells[1].setAttribute('contenteditable', 'true');
+    cells[2].setAttribute('contenteditable', 'true');
+}
 
-        // Store the updated array back in localStorage
+function saveEntry(id, button) {
+    // Get the row containing the clicked button
+    let row = button.parentElement.parentElement;
+    let cells = row.querySelectorAll('td');
+
+    // Get the updated values
+    let updatedFname = cells[0].innerText;
+    let updatedLname = cells[1].innerText;
+    let updatedEmail = cells[2].innerText;
+
+    // Show confirmation alert
+    let confirmSave = confirm('Data updated successfully! Do you want to save the changes?');
+
+    if (confirmSave) {
+        // Update the localStorage with the new values
+        let storedData = JSON.parse(localStorage.getItem("userData")) || [];
+        let entry = storedData.find(entry => entry.id === id);
+        if (entry) {
+            entry.fname = updatedFname;
+            entry.lname = updatedLname;
+            entry.email = updatedEmail;
+        }
+
         localStorage.setItem("userData", JSON.stringify(storedData));
-        renderTable(); // Refresh table
+
+        // Re-render the table and make the cells non-editable
+        renderTable();
+    } else {
+        // Revert to non-editable cells without saving changes
+        renderTable();
     }
 }
 
