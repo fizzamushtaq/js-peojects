@@ -1,11 +1,27 @@
 let tableBody = document.getElementById('userTable');
 
+// Custom event to trigger table update
+document.addEventListener('dataUpdated', renderTable);
+
+function addUser(newUser) {
+    let users = JSON.parse(localStorage.getItem('users')) || [];
+    users.push(newUser);
+    localStorage.setItem('users', JSON.stringify(users));
+
+    // Trigger custom event
+    document.dispatchEvent(new CustomEvent('dataUpdated'));
+}
+
 window.onload = function() {
+    renderTable();
+}
+
+function renderTable() {
+    // Clear existing table content
+    tableBody.innerHTML = "";
+
     // Get the stored data from localStorage
     let storedData = JSON.parse(localStorage.getItem("userData")) || [];
-  
-    // Get the table body element
-    let tableBody = document.getElementById('userTable');
   
     // Loop through the stored data and append rows to the table
     storedData.map((entry, index) => {
@@ -16,8 +32,7 @@ window.onload = function() {
         const age = calculateAge(dob);
 
         row.innerHTML = `
-            <td>${entry.fname}</td>
-            <td>${entry.lname}</td>
+            <td>${entry.fname} ${entry.lname}</td>
             <td>${entry.email}</td>
             <td>${age}</td>
             <td>
@@ -56,8 +71,10 @@ function editEntry(id) {
 
         // Store the updated array back in localStorage
         localStorage.setItem("userData", JSON.stringify(storedData));
+        renderTable(); // Refresh table
     }
 }
+
 function deleteEntry(id) {
     let storedData = JSON.parse(localStorage.getItem("userData")) || [];
 
@@ -66,4 +83,5 @@ function deleteEntry(id) {
 
     // Store the updated array back in localStorage
     localStorage.setItem("userData", JSON.stringify(storedData));
+    renderTable(); // Refresh table
 }

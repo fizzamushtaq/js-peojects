@@ -17,7 +17,9 @@ body {
     text-align: center;
     padding-bottom: 50px;
 }
-
+.containers h1{
+    color: white;
+}
 
 form {
     display: flex;
