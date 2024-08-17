@@ -4,7 +4,7 @@ function setCookie() {
     const days = 7; // Cookie will expire in 7 days
 
     // Create a date object and set the expiry date
-    const d = new Date();
+    const d = new Date();+
     d.setTime(d.getTime() + (days*24*60*60*1000));
     const expires = "expires=" + d.toUTCString();
 
